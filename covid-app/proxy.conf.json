@@ -1,0 +1,14 @@
+{
+    "/json/*": {
+      "target": "http://localhost:8080",
+      "secure": false,
+	  "logLevel": "debug"
+      }
+	,
+	"/api/*": {
+      "target": "http://139.99.33.99:8000",
+      "secure": false,
+	  "logLevel": "debug"
+      }
+    }
+  

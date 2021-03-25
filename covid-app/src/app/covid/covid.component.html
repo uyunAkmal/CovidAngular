@@ -1,0 +1,67 @@
+<div class="container" role="main">
+  <h2>
+    Daily Covid Update - {{covidTotalDaily}}
+  </h2>
+
+  <!-- Add record starts  -->
+  <br><br><br>
+  <legend style="color:black;font-weight:bold;">Section A. Add New Record</legend>
+
+  <label for="Description">Description</label>
+  <input type="text" id="desc" [(ngModel)]="newDesc" name="desc">
+  <p></p>
+
+  <input type="submit" value="Add" (click)="addDesc()">
+  <!-- Add record ends  -->
+
+  <!-- Delete record starts  -->
+  <br><br><br>
+  <legend style="color:black;font-weight:bold;">Section B. Delete record</legend>
+  <legend style="color:black;font-weight:bold;">Select Records to view or Delete</legend>
+  <div *ngIf="covidTotalDesc != undefined">
+
+    <select [(ngModel)]="desc" name="desc" placeholder="select" (change)="onSelectDesc($event)" multiple="multiple">
+      <option *ngFor="let table of covidTotalDesc" [value]="table">
+        {{table.description}}
+      </option>
+    </select>
+  </div>
+
+  <form>
+    <div *ngIf="descObject != undefined" class="form-group">
+      <label>ID</label>
+      <input type="text" id="id" [(ngModel)]="descObject.id" name="id" disabled>
+      <label>Description</label>
+      <input type="text" id="desc" [(ngModel)]="descObject.description" name="desc" disabled>
+      <p></p>
+      <input type="submit" value="Delete" (click)="deleteDesc()">
+    </div>
+  </form>
+  <!-- Delete record Ends  -->
+
+  <!-- Put record starts  -->
+  <br><br><br>
+  <legend style="color:black;font-weight:bold;">Section C. Update record</legend>
+  <legend style="color:black;font-weight:bold;">Select Records to Update</legend>
+  <div *ngIf="covidTotalDesc != undefined">
+
+    <select [(ngModel)]="desc" name="desc" placeholder="select" (change)="onSelectUpdateDesc($event)" multiple="multiple">
+      <option *ngFor="let table of covidTotalDesc" [value]="table">
+        {{table.description}}
+      </option>
+    </select>
+  </div>
+
+  <form>
+    <div *ngIf="descObject != undefined" class="form-group">
+      <label>ID</label>
+      <input type="text" id="id" [(ngModel)]="updateDesc.id" name="id" disabled >
+      <label>Description</label>
+      <input type="text" id="desc" [(ngModel)]="updateDesc.description" name="desc" >
+      <p></p>
+      <input type="submit" value="Update" (click)="putDesc()">
+    </div>
+  </form>
+  <!-- Put record Ends  -->
+
+</div>

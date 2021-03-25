@@ -1,0 +1,6 @@
+{
+  "/api/chatterbot/*": {
+    "target": "http://139.99.33.99:8000",
+    "secure": false }
+    
+}
