@@ -64,4 +64,23 @@
   </form>
   <!-- Put record Ends  -->
 
+  <!-- Add Post starts  -->
+    <br><br><br>
+    <legend style="color:black;font-weight:bold;">Section D. Add Post Record</legend>
+  
+    <label for="Description">Description</label>
+    <input type="text" id="postDesc" [(ngModel)]="postDesc.description" name="post">
+    <p></p>
+  
+    <input type="submit" value="Post" (click)="addPost()">
+  <!-- Add Post ends  -->
+
+  <br><br><br>
+  <legend style="color:black;font-weight:bold;">Section E. Delete Post Record</legend>
+
+  <label for="Description">Description</label>
+  <input type="text" id="descDelete" [(ngModel)]="descDelete" name="descDelete">
+  <p></p>
+
+  <input type="submit" value="Delete" (click)="deleteCovidSoap()">
 </div>

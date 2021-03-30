@@ -26,6 +26,10 @@ export class CovidComponent implements OnInit {
 
   public updateDesc: any;
 
+  public postDesc: any;
+
+  public descDelete: any;
+
   constructor(
     private httpClient: HttpClient,
     public covidApiService: CovidApiService,
@@ -36,11 +40,13 @@ export class CovidComponent implements OnInit {
   ngOnInit(): void {
     this.descObject = {};
     this.updateDesc = {};
+    this.postDesc = {};
+    this.descDelete = "";
     this.getCovid();
     this.getCovidDesc();
 
     console.log("Covid Component Inited");
-    console.log("Total of Description Column Row --->" + this.descObject.length);
+
   }
 
   getCovid(): any {
@@ -61,6 +67,7 @@ export class CovidComponent implements OnInit {
     this.covidApiService.getCovidDesc().subscribe((data: any) => {
       console.log(data);
       this.covidTotalDesc = data;
+      console.log("Total of Description Column Row --->" + this.covidTotalDesc.length);
     });
 
     return this.covidTotalDesc;
@@ -103,7 +110,7 @@ export class CovidComponent implements OnInit {
 
     console.log("updateDesc-->" + this.updateDesc);
     if (this.desc[0]) {
-    
+
       let clonedDesc = Object.assign({}, this.desc[0]);
       // use a new cloned Object to prevent pass by reference value in the class
       this.updateDesc = clonedDesc;
@@ -112,6 +119,7 @@ export class CovidComponent implements OnInit {
     }
   }
 
+  // TODO: Practical 7 - complete the backend implementation only below
   putDesc() {
 
     this.covidApiService.putDesc(this.updateDesc).then(
@@ -119,4 +127,29 @@ export class CovidComponent implements OnInit {
         this.getCovidDesc();
       });
   }
+
+
+
+
+  // TODO: Practical 7 - complete the implementation below
+  // It should have a promise sync function 
+
+  addPost() {
+
+    this.covidApiService.postDesc(this.postDesc).then(
+      resolve => {
+
+        // if the method below being called using async way, then the table desc wont be updated accordingly after data added
+        this.getCovidDesc();
+      });
+  };
+
+  deleteCovidSoap() {
+
+    this.covidApiService.deleteCovidSoap(this.descDelete).then(
+      resolve => {
+        this.getCovidDesc();
+      });
+  }
 }
+
