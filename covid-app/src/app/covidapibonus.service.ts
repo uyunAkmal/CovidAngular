@@ -8,12 +8,15 @@ import { GlobalMethods } from 'src/environments/GlobalMethods';
   providedIn: 'root'
 })
 export class CovidApiServiceBonus {
+  removeDuplicateDesc(descRemove: any) {
+    throw new Error('Method not implemented.');
+  }
   //comment line below if got error
   public descObject: any;
 
   constructor(private httpClient: HttpClient, private confirmationDialogService: ConfirmationDialogService) { }
 
-  
+
   public getCovid(): any {
     return this.httpClient.get(`http://localhost:8081/covid/get/latest`, { responseType: 'text' });
   }
@@ -61,7 +64,7 @@ export class CovidApiServiceBonus {
   }
 
   //Put function, Update Record in trx_covid_cases_bonus
-  public putDescBonus(body : any): Promise<any> {
+  public putDescBonus(body: any): Promise<any> {
 
     return new Promise((resolve) => {
       return this.httpClient.put(`http://localhost:8081/covid/put/bonus`, body).subscribe((data: any) => {
@@ -83,7 +86,7 @@ export class CovidApiServiceBonus {
   public addPostBonus(body: any) {
     //body.description = body.desc;
     return new Promise((resolve) => {
-      return this.httpClient.post(`http://localhost:8081/covid/post/bonus`,body).subscribe((data: any) => {
+      return this.httpClient.post(`http://localhost:8081/covid/post/bonus`, body).subscribe((data: any) => {
 
         console.log(data);
         resolve(data);
@@ -116,5 +119,21 @@ export class CovidApiServiceBonus {
 
     });
   }
-  
+  descRemoveDuplicate(): Promise<any> {
+
+    return new Promise((resolve) => {
+      return this.httpClient.delete(`http://localhost:8081/covid/delete/duplicate/bonus`).subscribe((data: any) => {
+
+        console.log(data);
+        resolve(data);
+
+      }
+        ,
+        (error) => {
+          console.log(error);
+          this.confirmationDialogService.confirm(GlobalConstants.errorMessage, GlobalMethods.getError(error));
+        })
+    });
+  }
+
 }

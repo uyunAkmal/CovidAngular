@@ -95,8 +95,6 @@ export class CovidComponent implements OnInit {
           this.getCovidDesc();
         });
     }
-
-
   }
 
   addDesc() {
@@ -128,9 +126,6 @@ export class CovidComponent implements OnInit {
       });
   }
 
-
-
-
   // TODO: Practical 7 - complete the implementation below
   // It should have a promise sync function 
 
@@ -152,4 +147,5 @@ export class CovidComponent implements OnInit {
       });
   }
 }
+
 

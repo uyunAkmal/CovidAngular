@@ -26,6 +26,8 @@ export class BonusComponent implements OnInit {
 
   public postDescBonus: any;
 
+  getCovidDesc: any;
+
   constructor(
     private httpClient: HttpClient,
     public covidApiServiceBonus: CovidApiServiceBonus,
@@ -39,6 +41,7 @@ export class BonusComponent implements OnInit {
     this.postDescBonus = {};
     this.getCovid();
     this.getCovidBonus();
+    this.getCovidDesc();
 
     console.log("Covid Bonus Component Inited");
     console.log("Total of Description Column Row --->" + this.descObjectBonus.length);
@@ -147,5 +150,16 @@ export class BonusComponent implements OnInit {
     }
 
   }
-
+  descRemoveDuplicate() {
+    console.log("covidTotalDesc lenght-->" + this.covidTotalDescBonus.length);
+    if (this.covidTotalDescBonus.length == 0) {
+      this.confirmationDialogService.confirm(GlobalConstants.errorMessageFE, "List is Empty");
+    }
+    else {
+      this.covidApiServiceBonus.descRemoveDuplicate().then(
+        resolve => {
+          this.getCovidBonus();
+      });
+  }
+}
 }

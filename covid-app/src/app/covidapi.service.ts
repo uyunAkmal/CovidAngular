@@ -8,6 +8,9 @@ import { GlobalMethods } from 'src/environments/GlobalMethods';
   providedIn: 'root'
 })
 export class CovidApiService {
+  removeDuplicateDesc(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private httpClient: HttpClient, private confirmationDialogService: ConfirmationDialogService) { }
 
@@ -107,4 +110,20 @@ export class CovidApiService {
 
     });
   }
+  public descRemove(desc: string): Promise<any> {
+
+    return new Promise((resolve) => {
+      return this.httpClient.delete(`http://localhost:8081/covid/covid/delete/duplicate` + desc).subscribe((data: any) => {
+
+        console.log(data);
+        resolve(data);
+
+      }
+        ,
+        (error) => {
+          console.log(error);
+          this.confirmationDialogService.confirm(GlobalConstants.errorMessage, GlobalMethods.getError(error));
+        })
+} );
+}
 }
