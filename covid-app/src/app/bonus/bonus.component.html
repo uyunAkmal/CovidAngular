@@ -75,22 +75,5 @@
 <input type="submit" value="Post" (click)="addPostBonus()">
 <!-- POST record Ends  -->
 
-<!-- Delete record by description starts  -->
-
-<br><br><br>
-<legend style="color:black;font-weight:bold;">Section E. Delete with Condition</legend>
-
-<form>
-  <div *ngIf="descObjectBonus != undefined" class="form-group">
-    <label>Description</label>
-    <input type="text" id="desc" [(ngModel)]="descObjectBonus.description" name="desc">
-    <p></p>
-    <input type="submit" value="Delete" (click)="deleteDescriptionBonus()">
-  </div>
-</form>
-<!-- Delete record by description ends  -->
-<br><br><br>
-<legend style="color:black;font-weight:bold;">Section F. Remove Duplicate Description</legend>
-
-<input type="submit" value="Remove" (click)="descRemoveDuplicate()">
+<app-covid-delete></app-covid-delete>
 </div>

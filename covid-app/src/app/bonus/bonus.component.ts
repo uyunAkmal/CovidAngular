@@ -110,7 +110,6 @@ export class BonusComponent implements OnInit {
       resolve => {
         this.getCovidBonus();
       });
-      
 
     }
 
@@ -134,32 +133,5 @@ export class BonusComponent implements OnInit {
       resolve => {
         this.getCovidBonus();
       });
-  }
-
-  //delete
-  deleteDescriptionBonus(){
-
-    if (this.covidTotalDescBonus.length == 0) {
-      this.confirmationDialogService.confirm(GlobalConstants.errorMessageFE, "List is Empty");
-    }
-    else {
-      this.covidApiServiceBonus.deleteDescriptionBonus(this.descObjectBonus.description).then(
-        resolve => {
-          this.getCovidBonus();
-        });
-    }
-
-  }
-  descRemoveDuplicate() {
-    console.log("covidTotalDesc lenght-->" + this.covidTotalDescBonus.length);
-    if (this.covidTotalDescBonus.length == 0) {
-      this.confirmationDialogService.confirm(GlobalConstants.errorMessageFE, "List is Empty");
-    }
-    else {
-      this.covidApiServiceBonus.descRemoveDuplicate().then(
-        resolve => {
-          this.getCovidBonus();
-      });
-  }
 }
 }

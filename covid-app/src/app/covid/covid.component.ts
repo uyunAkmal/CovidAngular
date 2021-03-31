@@ -9,7 +9,7 @@ import { CovidCasesDesc } from 'src/model/CovidCasesDesc';
 @Component({
   selector: 'app-covid',
   providers: [CovidApiService],
-  styleUrls: ['./covid.component.css'],
+  styleUrls: ['covid.component.css'],
   templateUrl: './covid.component.html',
 
 })
